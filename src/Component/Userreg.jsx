@@ -1,6 +1,8 @@
 import React from 'react';
  import { useState } from 'react';
+ import { useNavigate } from 'react-router-dom';
 function Userreg() {
+    const navigate=useNavigate();
     const [user,setUser]=useState({
         Name:'',
         Email:'',
@@ -32,7 +34,8 @@ function Userreg() {
         if(Object.keys(newErrors).length===0){
             const users=JSON.parse(localStorage.getItem('users'))||[];
             users.push(user);
-            localStorage.setItem('users',JSON.stringify(users))
+            localStorage.setItem('users',JSON.stringify(users));
+            navigate('/login')
         }
     }
    
